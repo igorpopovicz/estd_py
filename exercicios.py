@@ -560,57 +560,96 @@ while n != 0:
 # Exercício 58
 
 import random
+import emoji
 
 acertou = bool(False)
-n = random.randint(0, 10)
+n = random.randint(0, 100)
 tentativas = 1
 print('\033[1;33m=-\033[m' * 18)
 print('\033[1;35mEstou pensando em um número de 0-10!\033[m')
 print('\033[1;33m=-\033[m' * 18)
 chute = int(input('\033[1;33mTente adivinhar qual é :\033[m '))
 if chute == n:
-    print("\033[1;32mParabéns! Você acertou de primeira \0/ !!!!!\033[m")
+    print('\033[1;32mParabéns! Você acertou de primeira\033[m', end=' ')
+    print(emoji.emojize(':exploding_head:'))
 while not acertou:
+    if chute < n:
+        print('\033[1;33mO número é \033[1;35mmaior\033[m', end=' ')
+        print(emoji.emojize(':backhand_index_pointing_up:'))
+    elif chute > n:
+        print('\033[1;33mO número é \033[1;35mmenor\033[m', end=' ')
+        print(emoji.emojize(':backhand_index_pointing_down:'))
     chute = int(input('\033[1;33mTente novamente: \033[m'))
     if chute == n:
         acertou = True
-        print('\033[1;32mIsso aí! você acertou :).\033[m')
+        print(emoji.emojize('\033[1;32mIsso aí :OK_hand: você acertou :partying_face:.\033[m'))
     tentativas += 1
-print('\033[1;33mEu estava pensando no número\033[m \033[1;31m{}\033[m'.format(n))
-print('\033[1;33mVocê acertou na \033[31m{}ª\033[m \033[1;33m tentativa.\033[m'.format(tentativas))
+print(emoji.emojize('\033[1;33mEu estava pensando :thinking_face: no número\033[m \033[1;31m{}\033[m'.format(n)))
+print('\033[1;33mVocê acertou na \033[31m{}ª\033[m \033[1;33mtentativa.\033[m'.format(tentativas))
 
 # Exercício 59
 
 import time
 
 choice = 0
-menu = '''
-[1] Somar
-[2] Multiplicar
-[3] Maior
-[4] Novos Números
-[5] Sair do programa
+menu = '''    [1] Somar
+    [2] Multiplicar
+    [3] Maior
+    [4] Novos Números
+    [5] Sair do programa
 '''
+choices = [1, 2, 3, 4, 5]
 n1 = int(input('1º número: '))
 n2 = int(input('2º número: '))
+print('')
+
 while choice != 5:
     print(menu)
-    choice = int(input(''))
+    choice = int(input('>>>>> Qual é sua opção? '))
     if choice == 1:
-        print('\n{} + {} = {}'.format(n1, n2, n1 + n2))
+        print('')
+        print('=-=' *10)
+        print('{:^10}'.format('{} + {} = {}'.format(n1, n2, n1 + n2)))
+        print('=-=' *10)
+        time.sleep(2)
     elif choice == 2:
+        print('')
+        print('=-=' *10)
         print('\n{} x {} = {}'.format(n1, n2, n1 * n2))
+        print('=-=' *10)
+        time.sleep(2)
     elif choice == 3:
         if n1 > n2:
+            print('')
+            print('=-=' *10)
             print('O primeiro número é o maior.')
+            print('=-=' *10)
+            time.sleep(2)
         elif n2 > n1:
+            print('')
+            print('=-=' *10)
             print('O segundo número é o maior.')
+            print('=-=' *10)
+            time.sleep(2)
         else:
+            print('')
+            print('=-=' *10)
             print('Os dois números são iguais.')
+            print('=-=' *10)
+            time.sleep(2)
     elif choice == 4:
         n1 = int(input('1º número: '))
         n2 = int(input('2º número: '))
-print('Encerrando o programa. ', end='')
+    elif choice == 5:
+        print('Encerrando o programa. ', end='')
+    else:
+        print('')
+        print('#' *32)
+        print('Opção inválida! Tente novamente.')
+        print('#' *32)
+        print('')
+        time.sleep(3)
+
 time.sleep(1)
 print('. ', end='')
 time.sleep(1)
@@ -618,8 +657,20 @@ print('. ')
 time.sleep(1)
 
 # Exercício 60
+import time
 
-print('Perdemo')
+print('Digite um número para')
+n = int(input('calcular seu fatorial: '))
+c = n
+f = 1
+print('Calculando {}! = '.format(n), end='')
+time.sleep(1)
+while c > 0:
+    print('{}'.format(c), end='')
+    print(' x ' if c > 1 else ' = ', end='')
+    f *= c
+    c -= 1
+print('{}'.format(f))
 
 # Exercício 61
 
@@ -652,16 +703,23 @@ while t != 0:
 
 # Exercício 63
 
+print('-'*30)
+print('{:^30}'.format('Sequência de fibonacci'))
+print('-'*30)
 x = 0
-y = int(input('Digite um número: '))
+y = int(input('Quantos números você quer mostrar? '))
 a = 0
 b = 1
-while x != y:
+print('~'*(y*6))
+print('{} -> {}'.format(a,b), end=' -> ')
+while x != (y-2):
     c = a + b
     a = b
     b = c
-    print(c)
+    print(c, end=' -> ')
     x += 1
+print('FIM')
+print('~'*(y*6))
 
 # Exercício 64
 
@@ -669,13 +727,13 @@ end = False
 qnt = 1
 soma = 0
 while not end:
-    n = int(input('Digite o {}º número: '.format(qnt)))
+    n = int(input('Digite o {}º número [999 para parar]: '.format(qnt)))
     qnt += 1
     if n != 999:
         soma = soma + n
     else:
         end = True
-print('Você digitou {} números, e a soma deles é: {}'.format(qnt, soma))
+print('Você digitou {} números, e a soma deles é: {}'.format(qnt-2, soma))
 
 # Exercício 65
 
@@ -706,9 +764,104 @@ while quer_continuar:
 print('A média de todos os números foi: {}'.format(soma / (qnt - 1)))
 print('O maior número digitado foi: {}'.format(maior))
 print('O menor número digitado foi: {}'.format(menor))
-print(qnt - 1)
-print(soma)
-
 
 # Exercício 66
+
+n = s = 0
+c = 0
+while True:
+    n = int(input('Digite um número: '))
+    if n == 999:
+        break
+    c += 1
+    s += n
+# print('A soma dos valores é: {}'.format(s))
+print(f'Você digitou {c} números.')
+print(f'A soma deles é: {s}')
+
+# Exercício 67
+
+n = 1
+while n > 0:
+    print('=-='*12)
+    n = int(input('Quer ver a tabuada de qual valor ? '))
+    print('=-='*12)
+    if n > 0:
+        for x in range(1,11):
+            print(f'{n} x {x} = {n*x}')
+print('acabou')
+
+# Exercício 68
+
+import random
+perdeu = False
+win = 0
+print('=-'*15)
+print('{:^30}'.format('VAMOS JOGAR PAR OU ÍMPAR'))
+print('=-'*15)
+while not perdeu:
+    n_pc = random.randint(0,10)
+    par_ou_impar = str(input('Par ou impar? ')).strip().upper()[0]
+    n = int(input('Seu número [0-10]: '))
+    if n == n_pc:
+        print(f'O computador escolheu {n_pc} também!')
+    else:
+        print(f'O computador escolheu {n_pc}')
+    jogo = n + n_pc
+    print(f'{n} + {n_pc} = {jogo}')
+    if jogo % 2 == 0:
+        print('Deu par!')
+        if par_ou_impar == 'P':
+            print('Parabéns, você venceu!')
+            win += 1    
+        else:
+            print('Você perdeu.')
+            perdeu = True
+    else:
+        print('Deu ímpar!')
+        if par_ou_impar == 'I':
+            print('Parabéns, você venceu!')
+            win += 1    
+        else:
+            print('Você perdeu.')
+            perdeu = True
+print(f'Você teve {win} vitórias consecutivas')
+
+# Exercício 69
+
+quer_parar = False
+maior = 0
+homem = 0
+mulher = 0
+mulher_menos_vinte = 0
+while not quer_parar:
+    print('-'*30)
+    print('{:^30}'.format('CADASTRE UMA PESSOA'))
+    print('-'*30)
+    idade = int(input('Idade: '))
+    if idade >= 18:
+        maior += 1
+    while True:
+        sexo = str(input('Sexo [M/F]: ')).strip().upper()[0]
+        if sexo == 'M':
+            homem += 1
+            break
+        elif sexo == 'F':
+            if idade < 20:
+                mulher_menos_vinte += 1
+            mulher += 1
+            break
+    while True:
+        mais = str(input('Quer continuar? [S/N]: ')).strip().upper()[0]
+        if mais == 'N':
+            quer_parar = True
+        elif mais == 'S':
+            break
+print(f'{maior} pessoas tem mais de 18 anos')
+print(f'{homem} homens foram cadastrados.')
+print(f'{mulher} mulheres foram cadastradas')
+print(f'{mulher_menos_vinte} mulheres tem menos de 20 anos')
+
+# Exercício 70
+
 

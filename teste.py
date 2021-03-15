@@ -1,30 +1,33 @@
-import random
-import emoji
-
-acertou = bool(False)
-n = random.randint(0, 100)
-tentativas = 1
-print('\033[1;33m=-\033[m' * 18)
-print('\033[1;35mEstou pensando em um número de 0-10!\033[m')
-print('\033[1;33m=-\033[m' * 18)
-print(n)
-chute = int(input('\033[1;33mTente adivinhar qual é :\033[m '))
-if chute == n:
-    print('\033[1;32mParabéns! Você acertou de primeira\033[m', end=' ')
-    print(emoji.emojize(':exploding_head:'))
-while not acertou:
-    if chute < n:
-        print('\033[1;33mO número é \033[1;35mmaior\033[m', end=' ')
-        print(emoji.emojize(':backhand_index_pointing_up:'))
-    elif chute > n:
-        print('\033[1;33mO número é \033[1;35mmenor\033[m', end=' ')
-        print(emoji.emojize(':backhand_index_pointing_down:'))
-    chute = int(input('\033[1;33mTente novamente: \033[m'))
-    if chute == n:
-        acertou = True
-        print(emoji.emojize('\033[1;32mIsso aí :OK_hand: você acertou :partying_face:.\033[m'))
-    tentativas += 1
-print(emoji.emojize('\033[1;33mEu estava pensando :thinking_face: no número\033[m \033[1;31m{}\033[m'.format(n)))
-print('\033[1;33mVocê acertou na \033[31m{}ª\033[m \033[1;33mtentativa.\033[m'.format(tentativas))
-
-
+quer_parar = False
+maior = 0
+homem = 0
+mulher = 0
+mulher_menos_vinte = 0
+while not quer_parar:
+    print('-'*30)
+    print('{:^30}'.format('CADASTRE UMA PESSOA'))
+    print('-'*30)
+    idade = int(input('Idade: '))
+    if idade >= 18:
+        maior += 1
+    while True:
+        sexo = str(input('Sexo [M/F]: ')).strip().upper()[0]
+        if sexo == 'M':
+            homem += 1
+            break
+        elif sexo == 'F':
+            if idade < 20:
+                mulher_menos_vinte += 1
+            mulher += 1
+            break
+    while True:
+        mais = str(input('Quer continuar? [S/N]: ')).strip().upper()[0]
+        if mais == 'N':
+            quer_parar = True
+        elif mais == 'S':
+            break
+print(f'{maior} pessoas tem mais de 18 anos')
+print(f'{homem} homens foram cadastrados.')
+print(f'{mulher} mulheres foram cadastradas')
+print(f'{mulher_menos_vinte} mulheres tem menos de 20 anos')
+      
