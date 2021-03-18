@@ -547,7 +547,7 @@ print('A média de idade do grupo é de {} anos'.format(soma_das_idades / 5))
 print('O homem mais velho tem {} anos e se chama {}'.format(veio, nome_do_veio))
 print('Ao todo são {} mulheres com menos de 20 anos.'.format(mina))
 
-# Exercício 57
+# Exercício 57 "Validação de Dados"
 
 n = 1
 while n != 0:
@@ -557,7 +557,7 @@ while n != 0:
     else:
         print('Sintaxe errada digite "M" para masculino ou "F" para feminino')
 
-# Exercício 58
+# Exercício 58 "Jogo da advinhação 2.0"
 
 import random
 import emoji
@@ -587,7 +587,7 @@ while not acertou:
 print(emoji.emojize('\033[1;33mEu estava pensando :thinking_face: no número\033[m \033[1;31m{}\033[m'.format(n)))
 print('\033[1;33mVocê acertou na \033[31m{}ª\033[m \033[1;33mtentativa.\033[m'.format(tentativas))
 
-# Exercício 59
+# Exercício 59 "Menu de opções"
 
 import time
 
@@ -656,7 +656,7 @@ time.sleep(1)
 print('. ')
 time.sleep(1)
 
-# Exercício 60
+# Exercício 60 "Cálculo Fatorial"
 import time
 
 print('Digite um número para')
@@ -672,7 +672,7 @@ while c > 0:
     c -= 1
 print('{}'.format(f))
 
-# Exercício 61
+# Exercício 61 "Progressão Aritimética"
 
 a1 = int(input('Digite o primeiro termo de uma P.A: '))
 r = int(input('Digite a razão dessa P.A: '))
@@ -683,7 +683,7 @@ while x != 10:
     x += 1
 print('ACABOU')
 
-# Exercício 62
+# Exercício 62 "Super Progressão Aritimética"
 
 t = 10
 a1 = int(input('Digite o primeiro termo de uma P.A: '))
@@ -701,7 +701,7 @@ while t != 0:
     else:
         t = 0
 
-# Exercício 63
+# Exercício 63 "Gerador de Fibonacci"
 
 print('-'*30)
 print('{:^30}'.format('Sequência de fibonacci'))
@@ -721,7 +721,7 @@ while x != (y-2):
 print('FIM')
 print('~'*(y*6))
 
-# Exercício 64
+# Exercício 64 "Tratando Vários Valore"
 
 end = False
 qnt = 1
@@ -735,7 +735,7 @@ while not end:
         end = True
 print('Você digitou {} números, e a soma deles é: {}'.format(qnt-2, soma))
 
-# Exercício 65
+# Exercício 65 "Maior e Menor valores"
 
 quer_continuar = True
 qnt = 1
@@ -765,7 +765,7 @@ print('A média de todos os números foi: {}'.format(soma / (qnt - 1)))
 print('O maior número digitado foi: {}'.format(maior))
 print('O menor número digitado foi: {}'.format(menor))
 
-# Exercício 66
+# Exercício 66 "Vários números com Flag"
 
 n = s = 0
 c = 0
@@ -779,19 +779,19 @@ while True:
 print(f'Você digitou {c} números.')
 print(f'A soma deles é: {s}')
 
-# Exercício 67
+# Exercício 67 "Tabuada"
 
-n = 1
-while n > 0:
+while True:
     print('=-='*12)
     n = int(input('Quer ver a tabuada de qual valor ? '))
     print('=-='*12)
-    if n > 0:
-        for x in range(1,11):
+    if n < 0:
+        break
+    for x in range(1,11):
             print(f'{n} x {x} = {n*x}')
 print('acabou')
 
-# Exercício 68
+# Exercício 68 "Par ou Ímpar ?"
 
 import random
 perdeu = False
@@ -827,7 +827,7 @@ while not perdeu:
             perdeu = True
 print(f'Você teve {win} vitórias consecutivas')
 
-# Exercício 69
+# Exercício 69 "análize de dados de um grupo"
 
 quer_parar = False
 maior = 0
@@ -862,6 +862,76 @@ print(f'{homem} homens foram cadastrados.')
 print(f'{mulher} mulheres foram cadastradas')
 print(f'{mulher_menos_vinte} mulheres tem menos de 20 anos')
 
-# Exercício 70
+# Exercício 70 "Lojinho do Tadeu (quem comprou se fodeu) 2.0"
+
+print('='*50)
+print('{:-^50}'.format('Lojinho do Tadeu 2.0'))
+print('='*50)
+quer_continuar = True
+mais_de_mil = 0
+mais_barato = 'Pinto'
+valor_barato = 0
+contador = 0
+total = 0
+while quer_continuar:
+    podrutu = str(input('Nome do produto: ')).strip().capitalize()
+    preco = float(input('Preço R$'))
+    total += preco
+    contador += 1
+    if contador == 1:
+        valor_barato = preco
+        mais_barato = podrutu
+    if preco > 1000.00:
+        mais_de_mil += 1
+    if preco < valor_barato:
+        valor_barato = preco
+        mais_barato = podrutu
+    while True:
+        quer = str(input('Quer continuar? [S/N]: ')).strip().upper()[0]
+        if quer == 'S':
+            break
+        elif quer == 'N':
+            quer_continuar = False
+            break
+print('\n{:-^50}'.format('FIM DO PROGRAMA'))
+print('O total gasto na compra foi de: R${:.2f}'.format(total))
+print(f'{mais_de_mil} produtos custam mais de R$1000')
+print('O produto mais barato foi o {} custando R${:.2f}'.format(mais_barato, valor_barato)) 
+print('-'*50)
+
+# Exercício 71 "Simulador de Caixa eletronico"
+
+print('='*25)
+print('{:^25}'.format('FuckBank'))
+print('='*25)
+valor = int(input('Que valor você quer sacar? R$'))
+cinquenta = int(0)
+vinte = int(0)
+dez = int(0)
+um = int(0)
+while valor > 0:
+    if valor > 50:
+        cinquenta = valor // 50
+        valor = valor - (cinquenta * 50)
+    elif valor > 20:
+        vinte = valor // 20
+        valor = valor - (vinte * 20)
+    elif valor > 10:
+        dez = valor // 10
+        valor = valor - (dez *10)
+    elif valor < 10:
+        um = valor
+        valor = 0
+if cinquenta > 0:
+    print(f'Total de {cinquenta} notas de R$50')
+if vinte > 0:
+    print(f'Total de {vinte} notas de R$20')
+if dez > 0:    
+    print(f'Total de {dez} notas de R$10')
+if um > 0:
+    print(f'Total de {um} notas de R$1')
+print('='*25)
+print('Volte sempre ao FuckBanck! tenha um dia Foda!')
+
 
 
