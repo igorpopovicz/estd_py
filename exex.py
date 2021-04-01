@@ -933,5 +933,166 @@ if um > 0:
 print('='*25)
 print('Volte sempre ao FuckBanck! tenha um dia Foda!')
 
+# Exercíco 72 "Número por extenso"
 
+contagem = ('zero', 'um', 'dois', 'tres', 'quatro',
+             'cinco', 'seis', 'sete', 'oito', 'nove',
+              'dez', 'onze', 'doze', 'treze', 'quatorze',
+               'quinze', 'dezesseis', 'dezessete', 'dezoito',
+                'dezenove', 'vinte')
+while True:
+    n= int(input('Digite um número [0-20]: '))
+    if 0 <= n <= 20:
+        break
+print(f'Você digitou o número {contagem[n]}')
+
+# Exercício 73 "Tuplas com times de futebol"
+
+times = ('Palmeiras', 'Cruzeiro', 'Grêmio', 'Santos',
+         'Corinthians', 'Flamengo', 'Atlético Mineiro',
+          'Athletico Paranaense', 'Internacional',
+           'Chapecoense', 'Botafogo', 'São Paulo', 'Fluminense',
+            'Vasco da Gama', 'Bahia', 'Sport', 'Vitória', 'Ponte Preta',
+             'América', 'Coritiba')
+
+print('Cinco primeiros colocados:')
+for x in range(0,5):
+    print(f'{x+1}º -> {times[x]}')
+
+print('')
+
+print('Os últimos 4:')
+for x in range(0,5):
+    print(f'{16+x}º -> {times[15+x]}')
+
+print('')
+
+print('Times em ordem alfabética:')
+ordem = sorted(times)
+for x in range(0, len(ordem)):
+    print(ordem[x], end=', ')
+
+cha = times.index('Chapecoense') + 1
+print(f'\nO time "Chapecoense" está na {cha}ª posição')
+
+# Exercício 74 "Maior e menor valores em uma tupla"
+
+import random
+
+numeros = (random.randint(1,10), random.randint(1,10), random.randint(1,10), 
+    random.randint(1,10), random.randint(1,10))
+
+print('Os números sorteados foram : ', end='')
+for n in numeros:
+    print(f'{n}', end = ' ')
+print(f'\nO maior valor sorteado foi: {max(numeros)}')
+print(f'O menor valor sorteado foi: {min(numeros)}')
+
+# Exercício 75 "Análise de dados em uma tupla"
+
+num = (int(input('Digite um número: ')),
+       int(input('Digite outro número: ')),
+       int(input('Digite mais um número: ')), 
+       int(input('Digite o último número: ')))
+
+print('=-'*15)
+
+print('Você digitou os números: ', end='')
+for n in num:
+    print(n, end=' ')
+
+num_nove = num.count(9)
+if num_nove == 0:
+    print('\nO número 9 não foi digitado')
+else:
+    print(f'\nO número 9 apareceu {num_nove} vezes')
+
+if 3 in num:
+    print(f'O primeiro valor 3 está na {num.index(3)+1}ª posição')
+else:
+    print('O número 3 não foi digitado: ')
+
+print('Os números pares digitados foram: ', end='')
+for n in num:
+    if n % 2 == 0:
+        print(n, end=' ')
+print('')
+
+# Exercício 76 "Lista de preços com tupla"
+
+lista = ('Lápis', 1.75,
+         'Borracha', 2.00, 
+         'Caderno', 15.90, 
+         'Estojo', 10.00, 
+         'Transferidor', 4.20, 
+         'Compasso', 9.99, 
+         'Mochila', 120.32, 
+         'Canetas', 22.30, 
+         'livros', 34.90)
+
+print('-'*40)
+print('{:^40}'.format('Listagem de preços'))
+print('-'*40)
+for c in range(0, len(lista), 2):
+    #print('{}{}{}'.format('{:.<30}'.format(lista[c]), 'R$ ', '{:>7}'.format(lista[c+1])))
+    print(f'{lista[c]:.<30}{"R$ "}{lista[c+1]:>7}')
+print('-'*40)
+
+# Exercíco 77 "Contando vogais em tupla"
+
+palavras = ('aprender', 'programar', 'linguagem',
+            'python', 'curso', 'gratis', 'estudar',
+            'praticar', 'trabalhar', 'mercado',
+            'programador', 'futuro')
+
+for p in palavras:
+   print(f'\nNa palavra {p.upper():.<20} {"Temos:":>5} ', end='')
+   for letra in p:
+       if letra.lower() in 'aáàâãeéêiíoõôóuú':
+           print(letra, end=' ')
+print('')
+
+# Exercício 78:
+
+n = []
+for x in range(0, 5):
+    n.append(int(input('Digite um número: ')))
+print(f'Você Digitou os valores: {n}')
+maior = max(n)
+menor = min(n)
+print(f'O mair valor digitado foi: {maior} nas posições ', end='')
+for y, x in enumerate(n):
+    if x == maior:
+        print(f'{y}... ', end='')
+print('')
+print(f'O menor valor digitado foi: {menor} nas posições ', end='')
+for y, x in enumerate(n):
+    if x == menor:
+        print(f'{y}... ', end='')
+print('')
+
+# Exercício 79:
+
+listaa = []
+continua = True
+while continua:
+    num = int(input('Digite um valor: '))
+    if num in listaa:
+        print('Valor duplicado! não vou adicionar...')
+    else:
+        listaa.append(num)
+        print('Valor adicionado com sucesso...')
+    while True:
+        sn = str(input(('Quer continuar? [S/N]: '))).strip().upper()[0]
+        if sn == 'N':
+            continua = False
+            break
+        elif sn == 'S':
+            break
+listaa.sort()
+print(f'Você Digitou os valores {listaa}')
+
+# Exercício 80:
+
+print('perdemo')
 

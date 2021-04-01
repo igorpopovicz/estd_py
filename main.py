@@ -235,3 +235,89 @@ while True:
     s += n
 # print('A soma dos valores é: {}'.format(s))
 print(f'A soma dos valores é: {s}')
+
+# Variáveis compostas 
+
+# Tuplas
+
+lanche = ('hambúrger', 'suco', 'pizza', 'pudim')
+print(lanche)
+print(lanche[1])
+print(lanche[1:3])
+print(lanche[2:])
+for comida in lanche:
+    print(comida)
+for x in range(0, len(lanche)):
+    print(lanche[x])
+for y, x in enumerate(lanche):
+    print(f'Eu vou comer {y} na posição {x}')
+
+print(sorted(lanche)) # Ordem alfabética
+
+a = (2, 5, 4)
+b = (5, 8, 1, 2)
+c = a + b # -> c = (2, 5, 4, 5, 8, 1, 2)
+print(c.count(5)) # quantas vezes aparece o número 5
+print(c.index(8)) # em qual posição está o 8
+del (a) # deleta a tupla "a"
+
+# Listas
+
+lanche = ['Hamburger', 'Suco', 'Pizza', 'Pudim']
+#substituindo
+lanche[3] = 'Sorvete' # Lanche -> ['hamburger', 'suco', 'pizza', 'SORVETE']
+#Adicionando
+lanche.append('Cookie') # Lanche -> ['hamburger', 'suco', 'pizza', 'sorvete', 'COOKIE"]
+lanche.insert(0,'Cachorro_quente') # ['CACHORRO_QUENTE', 'hamburger', 'suco', 'pizza', 'sorvete', 'cookie"]
+#Removendo
+del lanche[3] # -> ['cachorro_quente', 'hamburger', 'suco', 'sorvete', 'cookie"]
+lanche.pop(3) # ^^^^^^
+lanche.remove('pizza') # ^^^^^^
+lanche.pop() # Remove o último elemento
+
+if 'pizza' in lanche:
+    lanche.remove('pizza')
+
+valores = list(range(4,11)) # -> valores = [4, 5, 6, 7, 8, 9, 10]
+valore = [8,2,5,4,9,3,0]
+#Organizar: 
+valores.sort() # -> valores = [0, 2, 3, 4, 5, 8, 9]
+#Ordem inversa: 
+valores.sort(reverse=True) # -> [9, 8, 5, 4, 3, 2, 1]
+#Quantidade de valores em uma Lista
+len(valores) # -> 7
+
+# Valores dados por um usuário em uma tupla
+valores = []
+for x in range(0,3):
+    valores.append(int(input('Digite um número: ')))
+print('Você Digitou os valores: ', end='')
+
+for x in valores:
+    print(x , end='')
+print('\n')
+
+# Verificando tuplas
+valoress = []
+valoress.append(5)
+valoress.append(9)
+valoress.append(4)
+
+for y, x in enumerate(valoress):
+    print(f'Na posição {y} encontrei o valor {x}!')
+print('Cheguei ao final da lista')
+
+# "Ligando uma lista a outra"
+a = [2, 3, 4, 7]
+b = a
+b[2] = 8
+print(a) # [2, 3, 8, 7]
+print(b) # [2, 3, 8, 7]
+
+# "Criando uma cópia"
+a = [1, 2, 3, 4]
+b = a[:]
+b[2] = 8
+print(a) # [1, 2, 3, 4]
+print(b) # [1, 2, 8, 4]
+

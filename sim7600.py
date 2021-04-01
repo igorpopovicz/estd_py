@@ -1,6 +1,9 @@
 import socket
 
-confiaveis = ['www.google.com', 'www.yahoo.com', 'www.bb.com.br']
+quatro_g = False
+wifi = True
+
+confiaveis = ['www.google.com', 'www.twitch.tv', 'www.youtube.com']
 
 def check_host():
     global confiaveis
@@ -16,4 +19,14 @@ def check_host():
         a.close()
     return False
 
-print(check_host() and "Conexão Ativa" or "Conexão Inativa")
+# print(check_host() and "Conexão Ativa" or "Conexão Inativa")
+
+if check_host() == True:
+    print('Tudo ok meu patrão')
+else:
+    print('D: ta morto')
+    quatro_g = True
+    wifi = False
+
+if quatro_g == True:
+    
