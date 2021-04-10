@@ -309,15 +309,31 @@ print('Cheguei ao final da lista')
 
 # "Ligando uma lista a outra"
 a = [2, 3, 4, 7]
-b = a
+b = a # 'b' é igual a 'a'
 b[2] = 8
 print(a) # [2, 3, 8, 7]
 print(b) # [2, 3, 8, 7]
 
 # "Criando uma cópia"
 a = [1, 2, 3, 4]
-b = a[:]
+b = a[:] # 'b' é igual a tudo o que tem em 'a'
 b[2] = 8
 print(a) # [1, 2, 3, 4]
 print(b) # [1, 2, 8, 4]
 
+#Listas em listas
+
+dados = ['pedro', 18]
+pessoas = []
+pessoas.append(dados[:]) # pessoas = [['pedro',25]]
+
+dados = ['pedro', 18]
+dados2 = ['igor', 18]
+pessoas.append(dados[:])
+pessoas.append(dados2[:]) #pessoas = [['pedro', 18], ['igor', 18]]
+
+#manualmente
+pessoas = [['pedro', 18], ['igor', 18], ['yuri', 23]]
+print(pessoas[0[0]]) # 'pedro'
+print(pessoas[2][1]) # 23
+print(pessoas[1]) # ['igor', 18]

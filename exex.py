@@ -1052,7 +1052,7 @@ for p in palavras:
            print(letra, end=' ')
 print('')
 
-# Exercício 78:
+# Exercício 78 "Maior e menor valores em uma lista":
 
 n = []
 for x in range(0, 5):
@@ -1071,7 +1071,7 @@ for y, x in enumerate(n):
         print(f'{y}... ', end='')
 print('')
 
-# Exercício 79:
+# Exercício 79 "Valores únicos em uma lista":
 
 listaa = []
 continua = True
@@ -1092,7 +1092,253 @@ while continua:
 listaa.sort()
 print(f'Você Digitou os valores {listaa}')
 
-# Exercício 80:
+# Exercício 80 "Lista oredenada sem repetições":
 
-print('perdemo')
+listafodona = []
+x = 0
+while True:
+    num = int(input('Digite um número: '))
+    if num in listafodona:
+        print('Esse número já esta na lista:')
+    else:
+        if x == 0:
+            listafodona.append(num)
+            x += 1
+            print('Adicionado no final da lista...')
+        else:
+            if num > max(listafodona):
+                listafodona.append(num)
+                print('Adicionado no final da lista...')
+                x += 1            
+            elif num < min(listafodona):
+                listafodona.insert(0, num)
+                print('Adicionado na posição 0 da lista...')
+                x += 1
+            elif len(listafodona) == 2:
+                if num > listafodona[0]:
+                    listafodona.insert(1, num)
+                    print('Adicionado na posição 1 da lista...')
+                    x += 1
+            elif len(listafodona) == 3:
+                if num > listafodona[1]:
+                    listafodona.insert(2, num)
+                    print('Adicionado na posição 2 da lista...')
+                    x += 1
+                elif num < listafodona[1]:
+                    listafodona.insert(1, num)
+                    print('Adicionado na posição 1 da lista...')
+                    x += 1
+            elif len(listafodona) == 4:
+                if num > listafodona[1]:
+                    listafodona.insert(2, num)
+                    print('Adicionado na posição 2 da lista...')
+                    x += 1
+                elif num < listafodona[1]:
+                    listafodona.insert(1, num)
+                    print('Adicionado na posição 1 da lista...')
+                    x += 1
+                if num > listafodona[2]:
+                    listafodona.insert(3, num)
+                    x += 1
+                    print('Adicionado na posição 3 da lista...')
+    if x > 4:
+        break
+print(listafodona)
 
+#Ou assim tabém (fica mais fácil '-')
+
+listabraba = []
+for x in range(0, 5):
+    n = int(input('Digite um número: '))
+    if x == 0 or n > listabraba[-1]:
+        listabraba.append(n)
+    else:
+        c = 0
+        while c < len(listabraba):
+            if n <= listabraba[c]:
+                listabraba.insert(c, n)
+                break
+            c += 1
+print(listabraba)
+
+# Exercício 81 "Extraindo dados de uma lista"
+
+continuar = True
+listapika = []
+while continuar:    
+    num = int(input('Digite um número: '))
+    listapika.append(num)
+    while True:
+        quer = str(input('Quer continuar [S/N]: ')).strip().upper()[0]
+        if quer == 'N':
+            continuar = False
+            break        
+        elif quer == 'S':
+            break
+print(f'{len(listapika)} números foram digitados.')
+listapika.sort(reverse = True)
+print(f'A ordem decrescente dos valores é : {listapika}')
+if 5 in listapika:
+    print('O valor 5 está na lista.')
+else:
+    print('O valor 5 não está na lista')
+
+# Exercício 82 "Dividindo valores em várias listas"
+
+todas = []
+pares = []
+impares = []
+continua = True
+while continua:
+    num = int(input('Digite um número: '))
+    todas.append(num)
+    if num % 2 == 0:
+        pares.append(num)
+    else:
+        impares.append(num)
+    while True:
+        que = str((input('Quer continuar? [S/N]: '))).strip().upper()[0]
+        if que == 'S':
+            break
+        elif que == 'N':
+            continua = False
+            break
+print(f'Você digitou os números: {todas}')
+print(f'Os números pares são : {pares}')
+print(f'Os números ímpares são : {impares}')
+
+# Exercício 83 "Validadando expressões matemáticas"
+
+expressão = str(input(''))
+if expressão.count('(') == 0 and expressão.count(')') == 0:
+    print('Essa expressão é válida')
+else:
+    if expressão.count('(') == expressão.count(')'):
+        if expressão.index('(') < expressão.index(')'):
+            print('Essa expressão é válida!')
+        else:
+            print('Essa não é uma expressão válida!')
+    else:
+        print('Essa não é uma expressão válida!')
+
+# Exercício 84
+
+dados = []
+pessoas = []
+maior = menor = 0
+continua = True
+c = 0
+while continua:
+    nome = str(input('Nome: '))
+    dados.append(nome)
+    peso = int(input('Peso: '))
+    dados.append(peso)
+    if c == 0:
+        maior = menor = peso
+        c += 1   
+    elif peso > maior:
+        maior = peso
+    elif peso < menor:
+        menor = peso
+    pessoas.append(dados[:])
+    dados.clear()
+    while True:
+        q = str(input('Quer continuar? [S/n]: ')).strip().upper()[0]
+        if q == 'S':
+            break
+        elif q == 'N':
+            continua = False
+            break
+print('=-'*30)
+print(f'{len(pessoas)}, pessoas foram cadastradas.')
+print(f'O maoir peso foi de: {maior}. Peso de ', end = '')
+for x in range(len(pessoas)):
+    if pessoas[x][1] == maior:
+        print(pessoas[x][0], end = ' ')
+print(f'\nO menor peso foi de: {menor}. Peso de ', end = '')
+for x in range(len(pessoas)):
+    if pessoas[x][1] == menor:
+        print(pessoas[x][0], end = ' ')
+print('')
+
+# Exercício 85
+
+valores = [[],[]]
+for x in range(0,7):
+    n = int(input(f'Digite o {x+1}º número: '))
+    if n % 2 == 0:
+        valores[0].append(n)
+    else:
+        valores[1].append(n)
+valores[0].sort()
+valores[1].sort()
+print('=-'*20)
+print(f'Números pares: {valores[0]}')
+print(f'Números impares: {valores[1]}')    
+
+# Exercício 86   
+ 
+m = [[0,0],[0,1],[0,2],
+    [1,0],[1,1],[1,2],
+    [2,0],[2,1],[2,2]]
+for x in range(0,9):
+    n = int(input(f'Digite um valor para {m[x]}: '))
+    m[x].clear()
+    m[x].append( n )
+for x in range(0,3):
+    print(m[x], end='')
+print('')
+for x in range(3,6):
+    print(m[x], end='')
+print('')
+for x in range(6,9):
+    print(m[x], end='')
+print('')
+
+# Exercício 87
+
+m = [[0,0],[0,1],[0,2],
+    [1,0],[1,1],[1,2],
+    [2,0],[2,1],[2,2]]
+par = 0
+terceira = 0
+maior = 0
+for x in range(0,9):
+    n = int(input(f'Digite um valor para {m[x]}: '))
+    if x == 2 or x == 5 or x == 8:
+        terceira += n
+    m[x].clear()
+    m[x].append( n )
+for x in range(0,3):
+    print(m[x], end='')
+print('')
+for x in range(3,6):
+    print(m[x], end='')
+    if x == 3:
+        maior = m[x][0]
+    elif m[x][0] > maior:
+        maior = m[x][0]
+print('')
+for x in range(6,9):
+    print(m[x], end='')
+print('')
+for y, x in enumerate(m):
+    if x[0] % 2 == 0:
+        par += x[0]
+print(f'A soma dos valores pares é: {par}')
+print(f'A soma dos valores da terceira coluna é: {terceira}')
+print(f'O maior número da segunda linha é: {maior}')
+
+#Exercício 88
+
+import random
+q = int(input('Quantos jogos: '))
+for x in range(0,q):
+    jogo = [[random.randint(1,60)],
+        [random.randint(1,60)],
+        [random.randint(1,60)],
+        [random.randint(1,60)],
+        [random.randint(1,60)],
+        [random.randint(1,60)]]
+    print(f'Jogo {x+1}:')
+    print(jogo)
